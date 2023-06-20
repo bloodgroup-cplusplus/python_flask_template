@@ -17,10 +17,11 @@ def info():
 @app.route('/puppy/<name>')
 
 def puppy(name):
-    return "<h1>This is a page for {}</h1>".format(name)
+    #return "<h1>This is a page for {}</h1>".format(name.upper())
+    return '100th letter: {}'.format(name[100])
 
 
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
