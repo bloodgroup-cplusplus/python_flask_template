@@ -14,14 +14,14 @@ def index():
 def info():
     return "<h1> Puppies are cute!</h1>"
 
-@app.route('/puppy/<name>')
+@app.route('/puppy_name/<name>')
 
-def puppy(name):
+def puppylatin(name):
     #return "<h1>This is a page for {}</h1>".format(name.upper())
     if name[-1]!='y':
         return 'With y: {}'.format(name+'y')
     else:
-        return "Replaced with iful":{}.format(name[:-1]+"iful")
+        return "Replaced with iful:{}".format(name[:-1]+"iful")
 
 
 
