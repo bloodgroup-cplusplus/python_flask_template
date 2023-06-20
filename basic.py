@@ -18,7 +18,12 @@ def info():
 
 def puppy(name):
     #return "<h1>This is a page for {}</h1>".format(name.upper())
-    return '100th letter: {}'.format(name[100])
+    if name[-1]!='y':
+        return 'With y: {}'.format(name+'y')
+    else:
+        return "Replaced with iful":{}.format(name[:-1]+"iful")
+
+
 
 
 
