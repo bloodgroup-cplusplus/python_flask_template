@@ -5,29 +5,6 @@ app = Flask(__name__)
 
 #flask(hi) we could add anything here
 
-
-@app.route("/")
-#once this application is running it is always waiting for server to write 
-# once they get the request at slash . Make this function handle a request 
-# and handle ehe response 
-
-
-
-
-def hello_world():
-    return "hello world"
-
-
-
-@app.route("/hello")
-
-
-def hello():
-    return "I just hit/hello"
-
-
-@app.route("/bye")
-
 """
     different datatypes we can send in json 
     {
@@ -55,17 +32,43 @@ def hello():
             "name":"Elfarouk"
         }
         ]
-        }
+        }"""
 
 
 
-""
+
+@app.route("/")
+#once this application is running it is always waiting for server to write 
+# once they get the request at slash . Make this function handle a request 
+# and handle ehe response 
+
+
+
+
+def hello_world():
+    return "hello world"
+
+
+
+@app.route("/hello")
+
+
+def hello():
+    return "I just hit/hello"
+
+@app.route("/bye")
 
 def bye():
     retJson={
-            "field1":"abc",
-            "field2":"def"
+            "Name":"Elfarouk",
+            "Age":22, 
+            "phones":[
+                {
+                    "phoneName":"Iphone8",
+                },
+            ]
         }
+
 
     return jsonify(retJson)
 
