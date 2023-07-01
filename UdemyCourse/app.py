@@ -77,7 +77,16 @@ def bye():
 def add_two_nums():
     # Get x and y from the posted data 
     dataDict = request.get_json()
-    return jsonify(dataDict)
+    a = dataDict["a"]
+    b= dataDict["b"]
+
+    c = a+b
+
+    retJSON={
+        "c":c
+    }
+
+    return jsonify(retJSON),200
 
     # Add z = x+y
 
