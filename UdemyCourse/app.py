@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import jsonify
+from flask import jsonify,request
 
 app = Flask(__name__)
 
@@ -71,6 +71,19 @@ def bye():
 
 
     return jsonify(retJson)
+
+@app.route("/add_two_nums",methods=["POST"])
+
+def add_two_nums():
+    # Get x and y from the posted data 
+    dataDict = request.get_json()
+    return jsonify(dataDict)
+
+    # Add z = x+y
+
+    #Prepare a json  "z":z 
+
+    # return json that we prepared 
 
 
 if __name__ == "__main__":
