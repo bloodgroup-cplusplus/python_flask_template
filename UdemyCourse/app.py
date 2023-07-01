@@ -7,9 +7,16 @@ api=Api(app)
 
 
 def checkPostedData(postedData, functionName):
-    if(functionName == "add"):
+    if(functionName == "add" or functionName=="subtract" or functionName=="multiply"):
         if "a" not in postedData or "b" not in postedData:
             return 301 
+        else:
+            return 200
+    elif functionName=="division":
+        if "a" not in postedData or "b" not in postedData:
+            return 301 
+        elif postedData["b"] == 0:
+            return 302
         else:
             return 200
 
@@ -28,6 +35,7 @@ class Add(Resource):
 
             }
             return jsonify(retJSON)
+        #if we are here, then status_code =200
         a= postedData["a"]
         b=postedData["b"]
         a=int(a)
@@ -42,17 +50,73 @@ class Add(Resource):
 
 
 class Subtract(Resource):
-    pass 
+    def post(self):
+        #if i am here, then the resource subtract was requested using the method POST
+
+        #step1: Get posted data 
+        postedData = request.get_json()
+
+        #Step 1b = verfiy validity of posted data
+        status_code = checkPostedData(postedData, "subtract")
+
+        if(status_code!=200):
+            retJson={
+                "Message":"An error happend",
+                "Status Code":status_code
+            }
+            return jsonify(retJson)
+        a=postedData["a"]
+        b=postedData["b"]
+        a,b=int(a),int(b)
+        ret=a-b
+        retMap={
+            'Difference':ret,
+            'Status Code':200
+        }
+        return jsonify(retMap)
+
 
 class Multiply(Resource):
-    pass 
+    def post(self):
+        postedData=request.get_json()
+        status_code = checkPostedData(postedData, "multiply")
+        if(status_code!=200):
+            retJson={
+                "Message":"An error happened",
+                "Status Code":status_code
+            }
+            return jsonify(retJson)
 
+        a=postedData["a"]
+        b=postedData["b"]
+        a,b=int(a),int(b)
+        ret = a*b
+        retMap={
+            'Product':ret,
+            'Status Code':200
+        }
+        return jsonify(retMap)
 class Divide(Resource):
-    pass
+    def post(self):
+        postedData=request.get_json()
+        status_code = checkPostedData(postedData, "divide")
+        if(status_code!=200):
+            retJson={
+                "Message":"An error happened",
+                "Status Code":status_code
+            }
+            return jsonify(retJson)
+        a=postedData['a']
+        b=postedData['b']
+        a,b = int(a),int(b)
+
 
 
 # mapping resources 
 api.add_resource(Add,"/add")
+api.add_resource(Subtract,"/subtract")
+api.add_resource(Multiply,"/multiply")
+api.add_resource(Divide,"/divide")
 #flask(hi) we could add anything here
 
 """
