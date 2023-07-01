@@ -12,7 +12,7 @@ def checkPostedData(postedData, functionName):
             return 301 
         else:
             return 200
-    elif functionName=="division":
+    elif functionName=="divide":
         if "a" not in postedData or "b" not in postedData:
             return 301 
         elif postedData["b"] == 0:
@@ -111,7 +111,7 @@ class Divide(Resource):
         a,b = int(a),int(b)
         ret=a/b
         retMap={
-            'Product':ret,
+            'Division':ret,
             'Status Code':200
         }
         return jsonify(retMap)
