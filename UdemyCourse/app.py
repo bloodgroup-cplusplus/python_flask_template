@@ -1,8 +1,42 @@
 from flask import Flask
 from flask import jsonify,request
+from flask_restful import Api,Resource
 
 app = Flask(__name__)
+api=Api(app)
 
+#define our resources
+
+class Add(Resource):
+    def post(self):
+        #if i am here, then the resource add was requested using the method POST
+        #Step 1 : get posted data 
+        postedData = request.get_json()
+        a= postedData["a"]
+        b=postedData["b"]
+        a=int(a)
+        b=int(b)
+
+        ret=a+b
+        retMap={
+            'Sum':ret,
+            'Status Code':200
+        }
+        return jsonify(retMap)
+
+
+class Subtract(Resource):
+    pass 
+
+class Multiply(Resource):
+    pass 
+
+class Divide(Resource):
+    pass
+
+
+# mapping resources 
+api.add_resource(Add,"/add")
 #flask(hi) we could add anything here
 
 """
@@ -50,13 +84,11 @@ def hello_world():
 
 
 
-@app.route("/hello")
-
-
+"""@app.route("/hello")
 def hello():
     return "I just hit/hello"
-
-@app.route("/bye")
+"""
+"""@app.route("/bye")
 
 def bye():
     retJson={
@@ -70,13 +102,14 @@ def bye():
         }
 
 
-    return jsonify(retJson)
-
-@app.route("/add_two_nums",methods=["POST"])
+    return jsonify(retJson)"""
+"""@app.route("/add_two_nums",methods=["POST"])
 
 def add_two_nums():
     # Get x and y from the posted data 
     dataDict = request.get_json()
+    if "y" not in dataDict:
+        return "ERROR", 305
     a = dataDict["a"]
     b= dataDict["b"]
 
@@ -93,9 +126,10 @@ def add_two_nums():
     #Prepare a json  "z":z 
 
     # return json that we prepared 
-
+"""
 
 if __name__ == "__main__":
 
     #debug = true should be done only at testing and not at prdoction
     app.run(debug=True)
+
