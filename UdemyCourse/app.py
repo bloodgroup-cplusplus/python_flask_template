@@ -109,6 +109,12 @@ class Divide(Resource):
         a=postedData['a']
         b=postedData['b']
         a,b = int(a),int(b)
+        ret=a/b
+        retMap={
+            'Product':ret,
+            'Status Code':200
+        }
+        return jsonify(retMap)
 
 
 
