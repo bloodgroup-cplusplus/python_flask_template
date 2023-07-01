@@ -217,5 +217,5 @@ def add_two_nums():
 if __name__ == "__main__":
 
     #debug = true should be done only at testing and not at prdoction
-    app.run(debug=True)
+    app.run(host="0.0.0.0")
 
