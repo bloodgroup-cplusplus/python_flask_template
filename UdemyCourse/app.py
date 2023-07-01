@@ -5,13 +5,29 @@ from flask_restful import Api,Resource
 app = Flask(__name__)
 api=Api(app)
 
-#define our resources
 
+def checkPostedData(postedData, functionName):
+    if(functionName == "add"):
+        if "a" not in postedData or "b" not in postedData:
+            return 301 
+        else:
+            return 200
+
+#define our resources
 class Add(Resource):
     def post(self):
         #if i am here, then the resource add was requested using the method POST
         #Step 1 : get posted data 
         postedData = request.get_json()
+        #Step 1b : Verify Validity of Posted Data
+        status_code=checkPostedData(postedData)
+        if(status_code!=200):
+            retJSON={
+                "Message":"An error happened",
+                "Status Code": status_code
+
+            }
+            return jsonify(retJSON)
         a= postedData["a"]
         b=postedData["b"]
         a=int(a)
