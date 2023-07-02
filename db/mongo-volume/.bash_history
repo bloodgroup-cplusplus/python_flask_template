@@ -31,3 +31,9 @@ exit
 clear
 ls
 docker
+clear
+ls
+clear
+ls
+monogsh -u admin --authenticationDatabase my-mongo-container
+mongosh

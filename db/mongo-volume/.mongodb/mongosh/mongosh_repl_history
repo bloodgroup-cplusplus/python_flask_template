@@ -1,3 +1,11 @@
+show dbs
+dbs
+db
+db.movie.insert({"name":"xyz"})
+show db
+show dbs
+db
+use test
 db
 clear
 dir
