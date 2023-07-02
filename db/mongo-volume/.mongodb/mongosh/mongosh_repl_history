@@ -1,3 +1,34 @@
+db.createCollection("chad")
+use admin
+db.switch
+db.createCollection("chad")
+show dbs
+show collections
+switch db admin
+dbs
+db.createCollection("movies")
+user:"admin",
+{
+use test
+use admin
+show dbs
+db.movie.insertOne({"name":"xyz"})
+admin.movie.insertOne({"name":"tutorial"})
+cls
+use admin
+db.movie.insertOne({"name":"xyz"})
+show dbs
+db.movie.show
+test.movie.show
+db
+firstdb
+db.movie.insertOne({"name":"xyz"})
+db.movie.insert({"name":"xyz"})
+show dbs
+db
+use test
+cls
+clear
 show dbs
 dbs
 db
@@ -18,4 +49,5 @@ mongosh
 mongosh - u < admin > --authenticationDatabase < my - mongo - container > mongosh - u < admin > --authenticationDatabase < my - mongo - container > mongosh
 mongosh -u admin --authenticationDatabase my-mongo-container
 mongosh -u; admin --authenticationDatabase my-mongo-container
+mongosh -u admin --authenticationDatabase my-mongo-containern --authenticationDatabase my-mongo-container
 mongosh -u admin --authenticationDatabase my-mongo-container
