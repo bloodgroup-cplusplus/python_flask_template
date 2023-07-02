@@ -1,0 +1,13 @@
+db
+clear
+dir
+cls
+ls
+cls
+clear
+mongo
+mongosh
+mongosh - u < admin > --authenticationDatabase < my - mongo - container > mongosh - u < admin > --authenticationDatabase < my - mongo - container > mongosh
+mongosh -u admin --authenticationDatabase my-mongo-container
+mongosh -u; admin --authenticationDatabase my-mongo-container
+mongosh -u admin --authenticationDatabase my-mongo-container
